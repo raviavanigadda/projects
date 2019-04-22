@@ -6,7 +6,7 @@ public class MamaNanciaPizzeria {
     private static int maxPizzas;
     private static int count=3;
     private static int numPizza;
-    static DeluxePizza[] pizzas;
+    private static DeluxePizza[] pizzas;
 
     public static void Welcome(){
         int option;
@@ -48,14 +48,15 @@ public class MamaNanciaPizzeria {
     public static void option1()
     {
         password(1);
-        addPizza();
+
 
     }
 
     public static void option3()
     {
         password(3);
-        displayPizza();
+
+
 
     }
 
@@ -71,6 +72,7 @@ public class MamaNanciaPizzeria {
             if(check==1){
 
                 System.out.println("Adding pizza details");
+                addPizza();
 
             }
             else if(check==2){
@@ -80,6 +82,7 @@ public class MamaNanciaPizzeria {
             }
             else if(check==3){
                 System.out.println("Display pizza details");
+                displayPizza();
             }
         }
 
@@ -104,17 +107,14 @@ public class MamaNanciaPizzeria {
 
         System.out.print("\nEnter no of pizzas: ");
         numPizza = sc.nextInt();
+
         if (numPizza > todaysPizzas.length) {
             System.out.println("Mama Nancia, you have enough ingredients for " + maxPizzas + " pizzas only.");
             System.out.println("Please try again. Thank you.");
             addPizza();
         } else {
-            for (int i = 0; i < maxPizzas; i++) {
-                pizzas[i] = new DeluxePizza();
-            }
 
-            for(int i=0;i<maxPizzas; i++)
-            {
+           for(int i=0; i <numPizza; i++) {
                 System.out.print("\nEnter size of pizza(small/medium/large): ");
                 size= sc.next();
                 System.out.print("\nEnter no of cheese toppings: ");
@@ -125,38 +125,49 @@ public class MamaNanciaPizzeria {
                 mushroom= sc.nextInt();
                 System.out.print("\nEnter no of veggie toppings: ");
                 veggies= sc.nextInt();
-                System.out.print("\nDo you want cheese filled dough?(y/n) ");
-                stuffeD= sc.next();
-                stuffedD = stuffeD.charAt(0) == 'y' || stuffeD.charAt(0) == 'Y';
+               // System.out.print("\nDo you want cheese filled dough?(y/n) ");
+               // stuffeD= sc.next();
+
+              //  stuffedD = stuffeD.charAt(0) == 'y' || stuffeD.charAt(0) == 'Y';
+
                 pizzas[i].setSize(size);
-                pizzas[i].setCheeseTopping(cheese);
-                pizzas[i].setPepperoniTopping(pepperoni);
-                pizzas[i].setMushroomTopping(mushroom);
-                pizzas[i].setVeggieTopping(veggies);
-                pizzas[i].setStuffedWithCheese(stuffedD);
+               pizzas[i].setCheeseTopping(cheese);
+               pizzas[i].setPepperoniTopping(pepperoni);
+               pizzas[i].setMushroomTopping(mushroom);
+               pizzas[i].setVeggieTopping(veggies);
+              // pizzas[i].setStuffedWithCheese(stuffedD);
 
             }
+
             count=3;
             Welcome();
         }
     }
 
     public static void displayPizza(){
-    int i,j;
-    System.out.println();
-    for(i=0;i<numPizza;i++){
-pizzas[i].toString();
-    }
-Welcome();
+    int i;
+
+    pizzas[0].getMushroomTopping();
+        pizzas[0].getCheeseTopping();
+        System.out.println("Checking here");
+        for(i=0;i< numPizza;i++){
+            pizzas[i].toString(); }
+    Welcome();
+
     }
 
     public static void main(String[] args) {
-        pizzas= new DeluxePizza[maxPizzas]; //creates objects for total number of pizzas per day.
+
 
         System.out.println("**********Welcome to Mama Nancia Pizzeria**********");
         System.out.print("\nPlease enter maximum number of pizzas for the day: ");
         maxPizzas = sc.nextInt();
         todaysPizzas = new int[maxPizzas]; //creates a array which contains information about pizza objects.
+        pizzas = new DeluxePizza[maxPizzas]; //creates objects for total number of pizzas per day.
+        //sets the values in array of objects to null
+        for(int i =0;i<pizzas.length;i++)
+            pizzas[i] = new DeluxePizza();
+
         Welcome();
     }
 

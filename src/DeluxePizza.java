@@ -66,22 +66,22 @@ public class DeluxePizza {
 	//---------------
 	public void setSize(String sz)
 	{
-		size = sz.toUpperCase();
+		this.size = sz.toUpperCase();
 	}
 	
 	public void setCheeseTopping(int cheese)
 	{
-		cheeseTopping = cheese;
+		this.cheeseTopping = cheese;
 	}
 	
 	public void setPepperoniTopping(int pepperoni)
 	{
-		pepperoniTopping = pepperoni;
+		this.pepperoniTopping = pepperoni;
 	}
 	
 	public void setMushroomTopping(int mushroom)
 	{
-		mushroomTopping = mushroom;
+		this.mushroomTopping = mushroom;
 	}
 
 	//mutator methods for additional attributes
