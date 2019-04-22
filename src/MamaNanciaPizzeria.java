@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MamaNanciaPizzeria {
@@ -6,8 +8,9 @@ public class MamaNanciaPizzeria {
     private static int maxPizzas;
     private static int count=3;
     private static int numPizza;
-    private static DeluxePizza[] pizzas;
 
+    //creates a list to maintain different pizzas
+    public static  List<DeluxePizza> pizzaList = new ArrayList<DeluxePizza>();
     public static void Welcome(){
         int option;
         System.out.print("\nMama Nancia, what do you want to do?\n\t1.\tEnter a new pizza order (password required)" +
@@ -105,8 +108,10 @@ public class MamaNanciaPizzeria {
         int cheese, pepperoni, mushroom,veggies;
         String size,stuffeD;
 
+
         System.out.print("\nEnter no of pizzas: ");
         numPizza = sc.nextInt();
+
 
         if (numPizza > todaysPizzas.length) {
             System.out.println("Mama Nancia, you have enough ingredients for " + maxPizzas + " pizzas only.");
@@ -114,44 +119,68 @@ public class MamaNanciaPizzeria {
             addPizza();
         } else {
 
-           for(int i=0; i <numPizza; i++) {
-                System.out.print("\nEnter size of pizza(small/medium/large): ");
-                size= sc.next();
-                System.out.print("\nEnter no of cheese toppings: ");
-                cheese= sc.nextInt();
-                System.out.print("\nEnter no of pepperoni toppings: ");
-                pepperoni= sc.nextInt();
-                System.out.print("\nEnter no of mushroom toppings: ");
-                mushroom= sc.nextInt();
-                System.out.print("\nEnter no of veggie toppings: ");
-                veggies= sc.nextInt();
-               // System.out.print("\nDo you want cheese filled dough?(y/n) ");
-               // stuffeD= sc.next();
+           // todaysPizzas = new int[numPizza]; //creates a array which contains information about pizza objects.
+           for(int i=1; i <=numPizza; i++) {
 
-              //  stuffedD = stuffeD.charAt(0) == 'y' || stuffeD.charAt(0) == 'Y';
+            DeluxePizza pizzaToCreate = new DeluxePizza();
 
-                pizzas[i].setSize(size);
-               pizzas[i].setCheeseTopping(cheese);
-               pizzas[i].setPepperoniTopping(pepperoni);
-               pizzas[i].setMushroomTopping(mushroom);
-               pizzas[i].setVeggieTopping(veggies);
-              // pizzas[i].setStuffedWithCheese(stuffedD);
+            pizzaToCreate.pizzaIndex = i;
+            Scanner sizeInput = new Scanner(System.in);
+            System.out.print("\nEnter size of pizza(small/medium/large): ");
+            pizzaToCreate.size = sizeInput.next();
+
+            Scanner setCheeseInput = new Scanner(System.in);
+            System.out.print("\nEnter no of cheese toppings: ");
+            pizzaToCreate.cheeseTopping = setCheeseInput.nextInt();
+
+
+            Scanner setPepperoniInput = new Scanner(System.in);
+            System.out.print("\nEnter no of pepperoni toppings: ");
+            pizzaToCreate.pepperoniTopping = setPepperoniInput.nextInt();
+
+
+            Scanner setMushroomInput = new Scanner(System.in);
+            System.out.print("\nEnter no of mushroom toppings: ");
+            pizzaToCreate.mushroomTopping = setMushroomInput.nextInt();
+
+
+            Scanner setVeggieInput = new Scanner(System.in);
+            System.out.print("\nEnter no of veggie toppings: ");
+            pizzaToCreate.veggieTopping = setVeggieInput.nextInt();
+
+
+            Scanner setDoughInput = new Scanner(System.in);
+            System.out.print("\nDo you want cheese filled dough?(true/false) ");
+            pizzaToCreate.stuffedWithCheese = setDoughInput.nextBoolean();
+
+            pizzaList.add(pizzaToCreate);
 
             }
-
+            System.out.println("Pizza's information has been stored. Thank you.");
             count=3;
             Welcome();
         }
     }
 
     public static void displayPizza(){
-    int i;
+      String searchSize;
+      int flag =0;
+      System.out.print("\nPlease enter pizza size to search: ");
+      searchSize = sc.next();
 
-    pizzas[0].getMushroomTopping();
-        pizzas[0].getCheeseTopping();
-        System.out.println("Checking here");
-        for(i=0;i< numPizza;i++){
-            pizzas[i].toString(); }
+        for(DeluxePizza pizza: pizzaList) {
+            if(pizza.getSize().equals(searchSize))
+            {
+                System.out.println(pizza);  // Will invoke overrided `toString()` method
+                System.out.println(" ");
+                flag=1;
+            }
+
+
+            }
+
+
+
     Welcome();
 
     }
@@ -162,11 +191,8 @@ public class MamaNanciaPizzeria {
         System.out.println("**********Welcome to Mama Nancia Pizzeria**********");
         System.out.print("\nPlease enter maximum number of pizzas for the day: ");
         maxPizzas = sc.nextInt();
-        todaysPizzas = new int[maxPizzas]; //creates a array which contains information about pizza objects.
-        pizzas = new DeluxePizza[maxPizzas]; //creates objects for total number of pizzas per day.
-        //sets the values in array of objects to null
-        for(int i =0;i<pizzas.length;i++)
-            pizzas[i] = new DeluxePizza();
+        todaysPizzas = new int[maxPizzas];
+
 
         Welcome();
     }

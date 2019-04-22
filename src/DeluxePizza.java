@@ -1,14 +1,14 @@
 public class DeluxePizza {
-	private String size;
-	private int cheeseTopping;
-	private int pepperoniTopping;
-	private int mushroomTopping;
+	public String size;
+	public int cheeseTopping;
+	public int pepperoniTopping;
+	public int mushroomTopping;
 
 	//additional attributes
-	private boolean stuffedWithCheese; //additional attribute to the class
-	private int veggieTopping; //veggie toppings excluding mushrooms
-	private static  int numberOfPizzas = 0; //track no of pizzas
-
+	public boolean stuffedWithCheese; //additional attribute to the class
+	public int veggieTopping; //veggie toppings excluding mushrooms
+	public static int numberOfPizzas = 0; //track no of pizzas
+	public int pizzaIndex;
 	// Constructors
 	//-------------
 	public DeluxePizza()
@@ -27,6 +27,12 @@ public class DeluxePizza {
 
 	}
 
+	//static method pizzasofSize to check for size and display
+	public static void pizzasOfSize(String size)
+	{
+
+
+	}
 	public DeluxePizza(String sz, int cheese, int pepperoni, int mushroom, boolean stuffedwithcheese, int veggietopping)
 	{
 		size = sz.toUpperCase();
@@ -125,13 +131,14 @@ public class DeluxePizza {
 		&& mushroomTopping == pizza.mushroomTopping
 				&& veggieTopping == pizza.veggieTopping;
 	}
-	
+
+
 	public String toString()
 	{
-		return "Pizza #\n\t" +"Pizza size: "+ size + "\nCheese filled dough: "+ stuffedWithCheese +
-				"\nNumber of cheese toppings: "+ cheeseTopping + "\nNumber of pepperoni toppings: " +
-		       pepperoniTopping +"Number of mushroom toppings: "+ mushroomTopping +
-				"Number of vegetable toppings: "+veggieTopping;
+		return "Pizza "+pizzaIndex+"\n\tPizza size: "+ size + "\n\tCheese filled dough: "+ stuffedWithCheese +
+				"\n\tNumber of cheese toppings: "+ cheeseTopping + "\n\tNumber of pepperoni toppings: " +
+		       pepperoniTopping +"\n\tNumber of mushroom toppings: "+ mushroomTopping +
+				"\n\tNumber of vegetable toppings: "+veggieTopping;
 	}
 
 }
