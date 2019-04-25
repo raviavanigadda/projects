@@ -8,7 +8,7 @@ public class MamaNanciaPizzeria {
     private static int maxPizzas;
     private static int count=3;
     private static int numPizza;
-
+private static int flag =0;
     //creates a list to maintain different pizzas
 
 
@@ -117,6 +117,8 @@ public class MamaNanciaPizzeria {
 
 
     public static void addPizza() {
+
+
         System.out.print("\nEnter no of pizzas: ");
         numPizza = sc.nextInt();
 
@@ -169,7 +171,7 @@ public class MamaNanciaPizzeria {
     }
 
     public static void modifyPizza(){
-         int modPizzaIndex, opt,flag =0;
+         int modPizzaIndex, opt;
          System.out.println("\nDisplaying Pizzas\n");
         for(DeluxePizza pizza: pizzaList)
         {   System.out.println("Pizza "+pizzaList.indexOf(pizza));
@@ -237,20 +239,23 @@ public class MamaNanciaPizzeria {
                 flag=1;
 
             }
-            else
-            {
-                String ch;
-                System.out.println("Pizza is not found. Do you want to add one?(Y/N): ");
-                ch=sc.next();
-                if(ch.indexOf(0)=='y'||ch.indexOf(0)=='Y')
-                    addPizza();
-                else
-                    Welcome();
+
+
             }
-            if(flag==1) {
+        if(flag==0) {
+            String ch;
+            System.out.print("\nPizza is not found. Do you want to add one?(Y/N): ");
+            ch = sc.next();
+            if (ch.equalsIgnoreCase("Y")||ch.equalsIgnoreCase("y")) {
+             flag=3;
+             addPizza();
+
+            }else
+                Welcome();
+        }
+         else if(flag==1) {
                 System.out.println("Pizza is modified. Use display function to view the pizzas. Thank you.");
                 Welcome();
-            }
         }
     }
 
