@@ -20,7 +20,7 @@ public class MamaNanciaPizzeria {
                 "\n\t2.\tChange information of a specific order (password required)\n\t" +
                 "3.\tDisplay details for all pizzas of a specific size(s/m/l)\n\t" +
                 "4.\tStatistics on today's pizzas\n\t" +
-                "5.\tQuit\nPlease enter your choice > ");
+                "5.\tQuit\n\nPlease enter your choice > ");
         option = sc.nextInt();
         order(option);
     }
@@ -162,17 +162,17 @@ public class MamaNanciaPizzeria {
             pizzaList.add(pizzaToCreate);
 
             }
-            System.out.println("Pizza's information has been stored. Thank you.");
+            System.out.println("\nPizza's information has been stored. Thank you.");
             count=3;
             Welcome();
         }
     }
 
     public static void modifyPizza(){
-            int modPizzaIndex, opt;
-            System.out.println("Displaying Pizzas");
+         int modPizzaIndex, opt,flag =0;
+         System.out.println("\nDisplaying Pizzas\n");
         for(DeluxePizza pizza: pizzaList)
-        {
+        {   System.out.println("Pizza "+pizzaList.indexOf(pizza));
             System.out.println(pizza);  // Will invoke overrided `toString()` method
             System.out.println(" ");
 
@@ -234,17 +234,22 @@ public class MamaNanciaPizzeria {
                     default:
                         break;
                 }
+                flag=1;
 
             }
             else
             {
                 String ch;
-                System.out.println("Pizza is not found. Do you want to add one? ");
+                System.out.println("Pizza is not found. Do you want to add one?(Y/N): ");
                 ch=sc.next();
                 if(ch.indexOf(0)=='y'||ch.indexOf(0)=='Y')
                     addPizza();
                 else
                     Welcome();
+            }
+            if(flag==1) {
+                System.out.println("Pizza is modified. Use display function to view the pizzas. Thank you.");
+                Welcome();
             }
         }
     }
@@ -258,7 +263,7 @@ public class MamaNanciaPizzeria {
         for(DeluxePizza pizza: pizzaList) {
             if(pizza.getSize().equals(searchSize))
             {
-                System.out.println("Pizza "+pizzaList.indexOf(pizza));
+                System.out.println("\nPizza "+pizzaList.indexOf(pizza));
                 System.out.println(pizza);  // Will invoke overrided `toString()` method
                 System.out.println(" ");
              }
