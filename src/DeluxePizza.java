@@ -8,7 +8,7 @@ public class DeluxePizza {
 	public boolean stuffedWithCheese; //additional attribute to the class
 	public int veggieTopping; //veggie toppings excluding mushrooms
 	public static int numberOfPizzas = 0; //track no of pizzas
-	public int pizzaIndex;
+	public int pizzaIndex; //index to track pizza
 	// Constructors
 	//-------------
 	public DeluxePizza()
@@ -134,10 +134,10 @@ public class DeluxePizza {
 				&& veggieTopping == pizza.veggieTopping;
 	}
 
-//"Pizza "+pizzaIndex+
+
 	public String toString()
 	{
-		return "\tPizza size: "+ size + "\n\tCheese filled dough: "+ stuffedWithCheese +
+		return "\n\tPizza size: "+ size + "\n\tCheese filled dough: "+ stuffedWithCheese +
 				"\n\tNumber of cheese toppings: "+ cheeseTopping + "\n\tNumber of pepperoni toppings: " +
 		       pepperoniTopping +"\n\tNumber of mushroom toppings: "+ mushroomTopping +
 				"\n\tNumber of vegetable toppings: "+veggieTopping;
