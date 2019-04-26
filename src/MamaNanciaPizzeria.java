@@ -121,6 +121,7 @@ private static int flag =0;
 
         System.out.print("\nEnter no of pizzas: ");
         numPizza = sc.nextInt();
+        String yN;
 
 
         if (numPizza > todaysPizzas.length) {
@@ -158,8 +159,17 @@ private static int flag =0;
 
 
             Scanner setDoughInput = new Scanner(System.in);
-            System.out.print("\nDo you want cheese filled dough?(true/false) ");
-            pizzaToCreate.stuffedWithCheese = setDoughInput.nextBoolean();
+            System.out.print("\nDo you want cheese filled dough?(y/n) ");
+            yN = sc.next();
+               if (yN.equalsIgnoreCase("Y")||yN.equalsIgnoreCase("y"))
+               {
+                   pizzaToCreate.stuffedWithCheese = true;
+               }
+               else
+               {
+                   pizzaToCreate.stuffedWithCheese = false;
+               }
+              //pizzaToCreate.stuffedWithCheese = setDoughInput.nextBoolean();
 
             pizzaList.add(pizzaToCreate);
 
@@ -175,11 +185,12 @@ private static int flag =0;
          System.out.println("\nDisplaying Pizzas\n");
         for(DeluxePizza pizza: pizzaList)
         {   System.out.println("Pizza "+pizzaList.indexOf(pizza));
-            System.out.println(pizza);  // Will invoke overrided `toString()` method
+            System.out.println(pizza);  // Will invoke overrided `tbvvggggggggggggggggggggggggggggggoString()` method
+            System.out.println("Price: $"+pizza.calcCost());
             System.out.println(" ");
 
         }
-        System.out.print("\nWhich pizza you want to change ? ");
+        System.out.print("\nWhich pizza you want to change ?");
         modPizzaIndex = sc.nextInt();
         for(DeluxePizza pizza: pizzaList) {
             if (modPizzaIndex==pizzaList.indexOf(pizza)) {
@@ -201,10 +212,17 @@ private static int flag =0;
                         pizzaList.get(modPizzaIndex).size = size;
                         break;
                     case 2:
-                        boolean cheeseFill;
+                        String cheeseFill;
                         System.out.println(" Enter your option for cheese fill: ");
-                        cheeseFill = sc.nextBoolean();
-                        pizzaList.get(modPizzaIndex).stuffedWithCheese = cheeseFill;
+                        cheeseFill = sc.next();
+                        if (cheeseFill.equalsIgnoreCase("Y")||cheeseFill.equalsIgnoreCase("y"))
+                        {
+                            pizzaList.get(modPizzaIndex).stuffedWithCheese = true;
+                        }
+                        else
+                        {
+                            pizzaList.get(modPizzaIndex).stuffedWithCheese = false;
+                        }
                         break;
                     case 3:
                         int cheeseT;
@@ -273,6 +291,7 @@ private static int flag =0;
                 System.out.println(" ");
              }
             }
+
     Welcome();
 
     }

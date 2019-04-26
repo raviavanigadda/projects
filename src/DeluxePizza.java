@@ -121,7 +121,9 @@ public class DeluxePizza {
 				cost = cost + 6;
 			}
 
-		}return cost + (cheeseTopping + pepperoniTopping + mushroomTopping ) * 2 + veggieTopping * 3;
+		}
+
+		  return cost + (cheeseTopping + pepperoniTopping + mushroomTopping ) * 2 + veggieTopping * 3;
 	}
 	
 	public boolean equals(DeluxePizza pizza)
