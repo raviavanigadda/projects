@@ -8,7 +8,7 @@ public class MamaNanciaPizzeria {
     private static int maxPizzas;
     private static int count=3;
     private static int numPizza;
-private static int flag =0;
+    private static int flag =0;
     //creates a list to maintain different pizzas
 
 
@@ -38,7 +38,7 @@ private static int flag =0;
                 option3();
                 break;
             case 4:
-                //  option4();
+                option4();
                 break;
             case 5:
                 System.exit(0);
@@ -55,8 +55,6 @@ private static int flag =0;
     {
         //password(1);
         addPizza();
-
-
     }
 
     public  static  void option2()
@@ -73,7 +71,10 @@ private static int flag =0;
 
     }
 
-
+    public static void option4()
+    {
+        pizzaStatistics();
+    }
 
     public static void password(int check) {
 
@@ -109,8 +110,8 @@ private static int flag =0;
                 Welcome();
             }
             count--;
-            System.out.println("Wrong password entered. Only " + count + " chances left. ");
             password(check);
+            System.out.println("Wrong password entered. Only " + count + " chances left. ");
         }
 
     }
@@ -130,7 +131,7 @@ private static int flag =0;
             addPizza();
         } else {
 
-           // todaysPizzas = new int[numPizza]; //creates a array which contains information about pizza objects.
+           //todaysPizzas = new int[numPizza]; //creates a array which contains information about pizza objects.
            for(int i=1; i <=numPizza; i++) {
                DeluxePizza pizzaToCreate = new DeluxePizza();
             pizzaToCreate.pizzaIndex=i;
@@ -157,8 +158,6 @@ private static int flag =0;
             System.out.print("\nEnter no of veggie toppings: ");
             pizzaToCreate.veggieTopping = setVeggieInput.nextInt();
 
-
-            Scanner setDoughInput = new Scanner(System.in);
             System.out.print("\nDo you want cheese filled dough?(y/n) ");
             yN = sc.next();
                if (yN.equalsIgnoreCase("Y")||yN.equalsIgnoreCase("y"))
@@ -186,7 +185,7 @@ private static int flag =0;
         for(DeluxePizza pizza: pizzaList)
         {   System.out.println("Pizza "+pizzaList.indexOf(pizza));
             System.out.println(pizza);  // Will invoke `toString()` method
-            System.out.println("Price: $"+pizza.calcCost());
+           //System.out.println("Price: $"+pizza.calcCost());
             System.out.println(" ");
 
         }
@@ -281,30 +280,76 @@ private static int flag =0;
         }
     }
 
-
     public static void displayPizza(){
-      String searchSize;
+      String searchSize; int cnt=0,index=0;
       System.out.print("\nPlease enter pizza size to search: ");
       searchSize = sc.next();
 
         for(DeluxePizza pizza: pizzaList) {
             if(pizza.getSize().equals(searchSize))
-            {
+            {   cnt = cnt+1;
                 System.out.println("\nPizza "+pizzaList.indexOf(pizza));
                 System.out.println(pizza);  // Will invoke overrided `toString()` method
                 System.out.println(" ");
-             }
-            }
-
+                index=1;
+             }else{
+                index=0;
+            }      }
+        if(index==1)
+            System.out.println("\nTotal no of pizzas of same size: "+count);
+        else
+            System.out.println("\nThere are no pizzas of size "+searchSize);
     Welcome();
+}
 
+    public static void pizzaStatistics(){
+        int choice,i =0;
+        int[] arrPrice = new int[maxPizzas];
+        System.out.print("\nMama Nancia, what information would you like?\n" +
+                "1.\tCost and details of cheapest pizza\n" +
+                "2.\tCost and details of most costly pizza\n" +
+                "3.\tNumber of pizzas sold today\n" +
+                "4.\tNumber of pizzas of a specific size\n" +
+                "5.\tAverage cost of pizzas\n" +
+                "6.\tQuit\nEnter your choice: ");
+        choice=sc.nextInt();
+        switch(choice){
+            case 1:for(DeluxePizza pizza: pizzaList){
+                while(i<pizzaList.size())
+                {
+                    arrPrice[i] = pizza.calcCost();
+                    i++;
+                }
+            }
+            for(i=0;i<maxPizzas;i++)
+                System.out.println(arrPrice[i]);
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                System.out.println("Returning back to main menu...");
+                Welcome();
+                break;
+            default:
+                break;
+        }
+
+        System.out.println("Returning back to menu...");
+        pizzaStatistics();
     }
 
     public static void main(String[] args) {
-
-
-        System.out.println("**********Welcome to Mama Nancia Pizzeria**********");
-        System.out.print("\nPlease enter maximum number of pizzas for the day: ");
+System.out.println("\n");
+        System.out.println("-----------------------------------------------------");
+        System.out.println("**********Welcome to MAMA NANCIA's PIZZERIA**********");
+        System.out.println("-----------------------------------------------------");
+        System.out.print("\nMama Nancia, How many pizzas do you want to make today? : ");
         maxPizzas = sc.nextInt();
         todaysPizzas = new int[maxPizzas];
         Welcome();

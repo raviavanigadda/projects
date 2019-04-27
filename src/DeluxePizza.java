@@ -101,20 +101,20 @@ public class DeluxePizza {
 	public int calcCost()
 	{
 		int cost = 0;
-		if(size.equals("SMALL")) {
+		if(size.equals("small")) {
 			cost = 10;
 			if(stuffedWithCheese = true)
 			{
 				cost = cost + 2;
 			}
 		}
-		else if (size.equals("MEDIUM")) {
+		else if (size.equals("medium")) {
 			cost = 12;
 			if(stuffedWithCheese = true)
 			{
 				cost = cost + 4;
 			}
-		}else if (size.equals("LARGE")) {
+		}else if (size.equals("large")) {
 			cost = 14;
 			if(stuffedWithCheese = true)
 			{
@@ -137,10 +137,10 @@ public class DeluxePizza {
 
 	public String toString()
 	{
-		return "\n\tPizza size: "+ size + "\n\tCheese filled dough: "+ stuffedWithCheese +
+		return "\tPizza size: "+ size + "\n\tCheese filled dough: "+ stuffedWithCheese +
 				"\n\tNumber of cheese toppings: "+ cheeseTopping + "\n\tNumber of pepperoni toppings: " +
 		       pepperoniTopping +"\n\tNumber of mushroom toppings: "+ mushroomTopping +
-				"\n\tNumber of vegetable toppings: "+veggieTopping;
+				"\n\tNumber of vegetable toppings: "+veggieTopping+ "\n\tPrice: $"+calcCost();
 	}
 
 }
