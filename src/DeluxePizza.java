@@ -1,4 +1,4 @@
-public class DeluxePizza {
+public class DeluxePizza extends MamaNanciaPizzeria {
 	public String size;
 	public int cheeseTopping;
 	public int pepperoniTopping;
@@ -33,6 +33,7 @@ public class DeluxePizza {
 
 
 	}
+
 	public DeluxePizza(String sz, int cheese, int pepperoni, int mushroom, boolean stuffedwithcheese, int veggietopping)
 	{
 		size = sz.toUpperCase();
@@ -134,6 +135,30 @@ public class DeluxePizza {
 				&& veggieTopping == pizza.veggieTopping;
 	}
 
+public static int lowestPrice(){
+	int small = 0,i,loc =0;
+		small = pizzaList.get(0).calcCost();
+
+	for(i=1; i<pizzaList.size(); i++){
+		if(pizzaList.get(i).calcCost()<small) {
+			small = pizzaList.get(i).calcCost();
+			loc = i;
+		}
+	}
+		return loc;
+}
+
+public static int highestPrice(){
+	int large = 0,i,loc =0;
+	large = pizzaList.get(0).calcCost();
+	for(i=1; i<pizzaList.size(); i++){
+		if(pizzaList.get(i).calcCost()>large) {
+			large = pizzaList.get(i).calcCost();
+			loc = i;
+		}
+	}
+	return loc;
+}
 
 	public String toString()
 	{
