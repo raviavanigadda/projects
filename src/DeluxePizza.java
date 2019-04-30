@@ -136,7 +136,7 @@ public class DeluxePizza extends MamaNanciaPizzeria {
 	}
 
 public static int lowestPrice(){
-	int small = 0,i,loc =0;
+	int small,i,loc =0;
 		small = pizzaList.get(0).calcCost();
 
 	for(i=1; i<pizzaList.size(); i++){
@@ -149,7 +149,7 @@ public static int lowestPrice(){
 }
 
 public static int highestPrice(){
-	int large = 0,i,loc =0;
+	int large,i,loc =0;
 	large = pizzaList.get(0).calcCost();
 	for(i=1; i<pizzaList.size(); i++){
 		if(pizzaList.get(i).calcCost()>large) {
@@ -159,6 +159,7 @@ public static int highestPrice(){
 	}
 	return loc;
 }
+
 
 	public String toString()
 	{
