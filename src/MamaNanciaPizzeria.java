@@ -132,7 +132,7 @@ public class MamaNanciaPizzeria {
         System.out.print("\nEnter no of pizzas: ");
         numPizza = sc.nextInt();
 
-        if ((numPizza > maxPizzas)||(flag==3)) {
+        if ((numPizza > maxPizzas)||(flag==3)||numPizza ==0) {
             System.out.println("Mama Nancia, you have enough ingredients for " + maxPizzas + " pizzas only.");
             System.out.println("Please try again. Thank you.");
             addPizza();
