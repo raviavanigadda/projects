@@ -12,8 +12,9 @@ public class MamaNanciaPizzeria {
     private static int flag =0;
     static  boolean inputIsOK = false;
     //creates a list to maintain different pizzas
-    public static  List<DeluxePizza> pizzaList = new ArrayList<DeluxePizza>();
+    public static  List<DeluxePizza> pizzaList = new ArrayList<DeluxePizza>(); //Arraylist to store different kinds of pizzas
 
+    //Welcome function which displays the menu for user to select
     public static void Welcome(){
         int option=0;
 
@@ -22,7 +23,7 @@ public class MamaNanciaPizzeria {
                 "3.\tDisplay details for all pizzas of a specific size(s/m/l)\n\t" +
                 "4.\tStatistics on today's pizzas\n\t" +
                 "5.\tQuit\n\nPlease enter your choice > ");
-
+    //Check for exceptions and when entered 0 or negative numbers, it'll prompt user to enter correct one.
         do{
             try {
                 option = sc.nextInt();
@@ -41,6 +42,7 @@ public class MamaNanciaPizzeria {
             order(option);
     }
 
+    //Order function which uses switch case to navigate through different options
     public static void order(int opt)
     {
         switch (opt) {
@@ -67,30 +69,35 @@ public class MamaNanciaPizzeria {
 
     }
 
+    //option1 which lets user to check for password and addPizzaas
     public static void option1()
     {
-        password(1); //check for password and send 1 as parameter in order to
-        addPizza();
+        password(1); //check for password and send 1 as parameter
+
     }
 
+    //checks for password and calls modifyPizza()
     public  static  void option2()
     {
 
         password(2);
-        modifyPizza();
+
     }
 
+    //calls displayPizza function
     public static void option3()
     {
         displayPizza();
 
     }
 
+    //calls pizzaStatistics function
     public static void option4()
     {
         pizzaStatistics();
     }
 
+    //Checks and compare the correct password otherwise, throw error and show no of wrong password entries.
     public static void password(int check) {
 
         String checkPwd = "deluxepizza";
@@ -125,23 +132,23 @@ public class MamaNanciaPizzeria {
 
     }
 
-
+//function to add new pizzas
     public static void addPizza() {
 
         String yN;
         System.out.print("\nEnter no of pizzas: ");
         numPizza = sc.nextInt();
-
-        if ((numPizza > maxPizzas)||(flag==3)||numPizza ==0) {
+//checks the input to the initial max pizzas or zero and shows error.
+        if ((numPizza > maxPizzas)||numPizza ==0) {
             System.out.println("Mama Nancia, you have enough ingredients for " + maxPizzas + " pizzas only.");
             System.out.println("Please try again. Thank you.");
             addPizza();
         } else {
-
+            //add pizzas with ingredients
 
             for(int i=1; i <=numPizza; i++) {
                 DeluxePizza pizzaToCreate = new DeluxePizza();
-                pizzaToCreate.pizzaIndex=i;
+                pizzaToCreate.pizzaIndex=i; //to keep track of pizzas
                 Scanner sizeInput = new Scanner(System.in);
                 System.out.println("|-----------------------------------------------------|");
                 System.out.print("\nEnter size of pizza(small/medium/large): ");
@@ -168,6 +175,7 @@ public class MamaNanciaPizzeria {
 
                 System.out.print("\nDo you want cheese filled dough?(y/n) ");
                 yN = sc.next();
+                //checks for input for y/n and then sets the bool value.
                 if (yN.equalsIgnoreCase("Y")||yN.equalsIgnoreCase("y"))
                 {
                     pizzaToCreate.stuffedWithCheese = true;
@@ -190,13 +198,13 @@ public class MamaNanciaPizzeria {
         int modPizzaIndex, opt;
         System.out.println("\nDisplaying Pizzas\n");
         for(DeluxePizza pizza: pizzaList)
-        {   System.out.println("Pizza "+pizzaList.indexOf(pizza));
+        {   System.out.println("Pizza "+pizzaList.indexOf(pizza)); //shows pizza index
             System.out.println(pizza);  // Will invoke `toString()` method
             System.out.println(" ");
 
         }
         System.out.print("\nWhich pizza(1-"+pizzaList.size()+") you want to change(0 to exit)?");
-        modPizzaIndex = sc.nextInt()-1;
+        modPizzaIndex = sc.nextInt()-1; //user able to enter index of pizza
         if(modPizzaIndex<0)
             Welcome();
         if((modPizzaIndex+1)>maxPizzas) {
@@ -206,6 +214,7 @@ public class MamaNanciaPizzeria {
         }        else {
             flag = 0;
         }
+
         for(DeluxePizza pizza: pizzaList) {
             if (modPizzaIndex==pizzaList.indexOf(pizza)) {
 
@@ -310,6 +319,7 @@ public class MamaNanciaPizzeria {
         Welcome();
     }
 
+    //returns for no of similar size pizzas
     public static int numberOfPizzasOfSize(){
         String searchSize; int count =0;
         System.out.print("\nPlease enter pizza size to search: ");
@@ -333,6 +343,7 @@ public class MamaNanciaPizzeria {
                 "5.\tAverage cost of pizzas\n" +
                 "6.\tQuit\nEnter your choice: ");
         choice=sc.nextInt();
+        System.out.println("\n");
         switch(choice){
             case 1:
                 System.out.println("|-----------------------------------------------------------|");
