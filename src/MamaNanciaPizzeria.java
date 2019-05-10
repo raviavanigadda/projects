@@ -15,7 +15,8 @@ public class MamaNanciaPizzeria {
     public static  List<DeluxePizza> pizzaList = new ArrayList<DeluxePizza>();
 
     public static void Welcome(){
-        int option=0;   System.out.println("-----------------------------------------------------------");
+        int option=0;
+
         System.out.print("\nMama Nancia, what do you want to do?\n\t1.\tEnter a new pizza order (password required)" +
                 "\n\t2.\tChange information of a specific order (password required)\n\t" +
                 "3.\tDisplay details for all pizzas of a specific size(s/m/l)\n\t" +
@@ -217,6 +218,7 @@ public class MamaNanciaPizzeria {
                         "6.\tNumber of vegetable toppings\n" +
                         "7.\tQuit Enter choice >");
                 opt = sc.nextInt();
+                System.out.println("\n");
                 switch (opt) {
                     case 1:
                         String size;
@@ -343,7 +345,7 @@ public class MamaNanciaPizzeria {
                 System.out.println("|-----------------------------------------------------------|");
                 break;
             case 3:
-                System.out.println("\nList of pizzas sold today: \n");
+                System.out.println("\nList of pizzas sold today: "+pizzaList.size()+"\n");
                 for(DeluxePizza pizza: pizzaList)
                 {   System.out.println("Pizza "+pizzaList.indexOf(pizza));
                     System.out.println(pizza);  // Will invoke `toString()` method
@@ -362,7 +364,7 @@ public class MamaNanciaPizzeria {
                 }
                 avg = sum/pizzaList.size();
                 System.out.println("|-----------------------------------------------------------|");
-                System.out.println("\nAverage cost of pizzas: $"+ avg);
+                System.out.println("Average cost of pizzas: $"+ avg);
                 System.out.println("|-----------------------------------------------------------|");
                 break;
             case 6:
