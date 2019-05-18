@@ -1,3 +1,8 @@
+/*Authors: Sai Ravi Teja Avanigadda (1895212), M.Siva. Pavani (1895730)
+ * Assignment : 2
+ * Description: Pizza Maker Program. This program is implemented using Arraylist, functions and exception handling is taken care in case of wrong inputs. */
+
+
 public class DeluxePizza extends MamaNanciaPizzeria {
     public String size;
     public int cheeseTopping;

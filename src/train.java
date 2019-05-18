@@ -42,15 +42,22 @@ public class train {
     }
 
     //randuom number generator function
-    public static int randomNumber() {
+    public static int randomNumber(int x) {
+        int randomInt;
         Random randomGenerator = new Random();
-        int randomInt = randomGenerator.nextInt(1000) + 1;
+        if(x==0) {
+            randomInt = randomGenerator.nextInt(1000) + 1;
+        }
+        else
+        {
+            randomInt = randomGenerator.nextInt(300) + 1;
+        }
         return randomInt;
     }
 
     //default constructor
     public train() {
-        metroID = randomNumber();
+        metroID = randomNumber(0);
         stationNum = 0;
         direction = passtotal = 0;
     }
@@ -62,16 +69,6 @@ public class train {
         direction = passtotal = 0;
     }
 
-    public int nextStation(int lastStation)
-    {
-        direction = 1;
-        while(stationNum!=0)
-        if(direction==1){
-            stationNum += 1;
-        }
-
-        return 0;
-    }
 
     @Override
     public String toString() {
