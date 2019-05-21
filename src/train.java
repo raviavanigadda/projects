@@ -44,6 +44,7 @@ public class train {
     //randuom number generator function
     public static int randomNumber(int x) {
         int randomInt;
+
         Random randomGenerator = new Random();
         if(x==0) {
             randomInt = randomGenerator.nextInt(1000) + 1;

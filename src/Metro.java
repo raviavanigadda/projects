@@ -33,6 +33,7 @@ public class Metro {
          System.out.println("Please enter atleast 3 stations.");
          welcome();
 
+
      }
 
      System.out.println("\nThis Metro line has "+ metroStn +" stations.");
