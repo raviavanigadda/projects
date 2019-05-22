@@ -3,10 +3,11 @@ import java.util.Scanner;
 
 public class train {
 
-    public int metroID;
-    public int stationNum;
-    public int direction; //1 for left, 0 for right
-    public int passtotal; //no of passengers currrently on train
+    public static int metroID;
+
+    public static String stationName;
+    public static int direction; //1 for left, 0 for right
+    public static int passtotal; //no of passengers currrently on train
 
 
     public int getMetroID() {
@@ -15,14 +16,6 @@ public class train {
 
     public void setMetroID(int metroID) {
         this.metroID = metroID;
-    }
-
-    public  int getStationNum() {
-        return stationNum;
-    }
-
-    public  void setStationNum(int stationNum) {
-        this.stationNum = stationNum;
     }
 
     public int getDirection() {
@@ -37,20 +30,32 @@ public class train {
         return passtotal;
     }
 
+
+    public String getStationName() {
+        return stationName;
+    }
+
+    public void setStationName(String stationName) {
+        this.stationName = stationName;
+    }
+
     public  void setPasstotal(int passtotal) {
         this.passtotal = passtotal;
     }
 
     //randuom number generator function
-    public static int randomNumber(int x) {
+    public static int randomNumber(int x,int y) {
         int randomInt;
 
         Random randomGenerator = new Random();
         if(x==0) {
             randomInt = randomGenerator.nextInt(1000) + 1;
         }
-        else
+        else if(x==2)
         {
+            randomInt = randomGenerator.nextInt(y) + 1;
+        }
+        else{
             randomInt = randomGenerator.nextInt(300) + 1;
         }
         return randomInt;
@@ -58,26 +63,26 @@ public class train {
 
     //default constructor
     public train() {
-        metroID = randomNumber(0);
-        stationNum = 0;
-        direction = passtotal = 0;
+        metroID = randomNumber(0,0);
+        direction = 0 ;
+        passtotal = 0;
     }
 
     //constructor with one parameter. only changes the metroID.
     public train(int metro_ID) {
         metro_ID = this.metroID;
-        stationNum = 0;
         direction = passtotal = 0;
     }
 
 
     @Override
     public String toString() {
-        return "Details: " +
+        return "train{" +
                 "metroID=" + metroID +
-                ", stationNum=" + stationNum +
+                ", stationName='" + stationName + '\'' +
                 ", direction=" + direction +
-                ", passtotal=" + passtotal;
+                ", passtotal=" + passtotal +
+                '}';
     }
 
     public boolean equals(train t)
