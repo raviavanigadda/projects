@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 public class Metro extends train {
 
-    private static int i,c, flag;
+    private static int i=0,c, flag;
     private static int metroStations, capacity = 300;
     private static int NewPassengers;
     private static int WaitPassengers;
@@ -68,7 +68,7 @@ private  static String[] metroInfo;
             System.out.println("Metro " + metroID + "(new Train) leaving station " + (stationIndex + 1) +" "+ metroInfo[i]+" "+ Direction
                     + " bound with " + NewPassengers + " passengers(s).");
             stationIndex++;
-            i++;
+
 
         }
         //middle stations
@@ -78,6 +78,7 @@ private  static String[] metroInfo;
             System.out.println("-------------------");
             stationIndex++;
 
+
         }
         //last station
         else if (flag == 2) {
@@ -85,6 +86,7 @@ private  static String[] metroInfo;
             System.out.println("-------------------");
             flag = 3;
             stationIndex =0;
+
         }
 
     }
@@ -97,6 +99,10 @@ private  static String[] metroInfo;
             setStation(NewPassengers, WaitPassengers, flag);
             gotoff = 0;
             goton = NewPassengers;
+            if(i==0)
+                i++;
+            else
+                i=0;
         } else if (flag == 1) {
 
             NewPassengers = train.randomNumber(1, 0);
@@ -111,7 +117,11 @@ private  static String[] metroInfo;
             goton = NewPassengers;
             System.out.println("Metro " + metroID + " leaving station " + stationIndex +" "+ metroInfo[i]+" "+ Direction
                     +" bound with " + NewPassengers + " passengers(s).");
-            i++;
+            if(i==0)
+                i++;
+            else
+                i--;
+
         } else if (flag == 2) {
             //NewPassengers = train.randomNumber(1, 0);
             setStation(NewPassengers, WaitPassengers, flag);
@@ -124,7 +134,9 @@ private  static String[] metroInfo;
             System.out.println("Metro " + metroID + " leaving station " + stationIndex +" "+ metroInfo[i]+" "+ Direction
                     +" bound with " + NewPassengers + " passengers(s).");
             Direction = "west";
-            i=0;
+            if(i==2)
+                i--;
+
 
         }
         System.out.println("Passenger(s) got off: " + gotoff +
