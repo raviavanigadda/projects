@@ -6,7 +6,7 @@ public class train {
     public static int metroID;
 
     public static String stationName;
-    public static int direction; //1 for left, 0 for right
+   public static int direction; //1 for left, 0 for right
     public static int passtotal; //no of passengers currrently on train
 
 

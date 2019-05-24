@@ -214,6 +214,7 @@ public class MamaNanciaPizzeria {
         if((modPizzaIndex+1)>maxPizzas) {
             System.out.println("\nSorry Mama Nancy. You have enough ingredients for " + maxPizzas + " pizzas only.");
             System.out.println("\nPlease try again....");
+            flag=0;
             modifyPizza();
         }        else {
             flag = 0;
