@@ -34,6 +34,7 @@ private  static String[] metroInfo;
 
         System.out.print("\nEnter number of metro stations(minimum 3): ");
         metroStations = sc.nextInt();
+        metroID = randomNumber(0,0);
         metroInfo = new String[metroStations];
         //repeat till user enters atleast 3 stations
         while (metroStations < 3) {
@@ -61,14 +62,10 @@ private  static String[] metroInfo;
 
         //Starting station
         if (flag == 0 || flag ==3) {
-            i=0;
+
             System.out.println("\nOnly in\n(New Passengers waiting " + x + ")");
             System.out.println("(Passengers left from last time " + y + ")");
             System.out.println("-------------------");
-            System.out.println("Metro " + metroID + "(new Train) leaving station " + (stationIndex + 1) +" "+ metroInfo[i]+" "+ Direction
-                    + " bound with " + NewPassengers + " passengers(s).");
-            stationIndex++;
-
 
         }
         //middle stations
@@ -76,8 +73,6 @@ private  static String[] metroInfo;
             System.out.println("\nIn the middle");
             System.out.println("(Passengers left from last time " + y + ")");
             System.out.println("-------------------");
-            stationIndex++;
-
 
         }
         //last station
@@ -85,9 +80,7 @@ private  static String[] metroInfo;
             System.out.println("\nAll out");
             System.out.println("-------------------");
             flag = 3;
-            stationIndex =0;
-
-        }
+         }
 
     }
 
@@ -99,10 +92,10 @@ private  static String[] metroInfo;
             setStation(NewPassengers, WaitPassengers, flag);
             gotoff = 0;
             goton = NewPassengers;
-            if(i==0)
-                i++;
-            else
-                i=0;
+            System.out.println("Metro " + metroID + "(new Train) leaving station " + (stationIndex + 1) +" "+ metroInfo[i]+" "+ Direction
+                    + " bound with " + NewPassengers + " passengers(s).");
+            stationIndex++;
+
         } else if (flag == 1) {
 
             NewPassengers = train.randomNumber(1, 0);
@@ -112,31 +105,22 @@ private  static String[] metroInfo;
             if(WaitPassengers < 0)
                 WaitPassengers = (-1) * WaitPassengers;
             setStation(NewPassengers, WaitPassengers, flag);
-
-
             goton = NewPassengers;
-            System.out.println("Metro " + metroID + " leaving station " + stationIndex +" "+ metroInfo[i]+" "+ Direction
+            System.out.println("Metro " + metroID + " leaving station " + (stationIndex+1) +" "+ metroInfo[i]+" "+ Direction
                     +" bound with " + NewPassengers + " passengers(s).");
-            if(i==0)
-                i++;
-            else
-                i--;
+            stationIndex++;
+
 
         } else if (flag == 2) {
-            //NewPassengers = train.randomNumber(1, 0);
             setStation(NewPassengers, WaitPassengers, flag);
-            //getPassengerDetails(NewPassengers,WaitPassengers,flag);
             gotoff = NewPassengers;
             NewPassengers = 0;
             goton = 0;
             WaitPassengers = 0;
-            flag=3;
-            System.out.println("Metro " + metroID + " leaving station " + stationIndex +" "+ metroInfo[i]+" "+ Direction
-                    +" bound with " + NewPassengers + " passengers(s).");
             Direction = "west";
-            if(i==2)
-                i--;
-
+            System.out.println("Metro " + metroID + " leaving station " + (stationIndex+1) +" "+ metroInfo[i]+" "+ Direction
+                    +" bound with " + NewPassengers + " passengers(s).");
+            stationIndex =0;
 
         }
         System.out.println("Passenger(s) got off: " + gotoff +
@@ -156,14 +140,22 @@ private  static String[] metroInfo;
         System.out.print("\nType \"y\" or \"Y\" for yes, anything else for no: ");
         ch = sc.next();
         if (ch.equalsIgnoreCase("Y") || ch.equalsIgnoreCase("y")) {
-            if (flag == 2)
+            if (flag == 2){
                 flag = 0;
-            else
+                i=0;
+            }
+            else{
                 flag = 1;
+                if(i == metroStations -1)
+                    flag =2;
+                i++;
+            }
+
             c++;
             if (c == (metroStations)) {
                 flag = 2;
                 c = 0;
+                i=metroStations-1;
             }
             nextStation(flag);
 
