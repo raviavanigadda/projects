@@ -4,9 +4,13 @@
 // which controls a metro train and that keeps track of stations and who gets on and off.
 // -----------------------------------------------------
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
+import java.util.Random;
+import java.sql.Time;
+
 public class Metro extends train {
 
     private static int i=0,c, flag;
@@ -16,8 +20,9 @@ public class Metro extends train {
     private static int gotoff;
     private static int goton;
     private static int stationIndex = 0;
-private  static String[] metroInfo;
+    private  static String[] metroInfo;
 
+    final Random random = new Random();
     private static String Direction = "east";
 
     public static Scanner sc = new Scanner(System.in);
@@ -42,7 +47,6 @@ private  static String[] metroInfo;
             welcome();
         }
 
-
         //Adds metro station names and number to the metro list
         for (int i = 0; i < metroStations; i++) {
 
@@ -56,7 +60,19 @@ private  static String[] metroInfo;
         nextStation(flag);
     }
 
-    //
+    //show time on arrival
+    public static String getCurrentTimeStamp() {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//dd/MM/yyyy
+        Date now = new Date();
+        String strDate = sdfDate.format(now);
+        return strDate;
+    }
+
+    public static void displayTime(){
+System.out.println("Metro arrived the station at: " + getCurrentTimeStamp());
+    }
+
+
 
     public static void setStation(int x, int y, int flag) {
 
@@ -66,6 +82,7 @@ private  static String[] metroInfo;
             System.out.println("\nOnly in\n(New Passengers waiting " + x + ")");
             System.out.println("(Passengers left from last time " + y + ")");
             System.out.println("-------------------");
+            displayTime();
 
         }
         //middle stations
@@ -73,13 +90,14 @@ private  static String[] metroInfo;
             System.out.println("\nIn the middle");
             System.out.println("(Passengers left from last time " + y + ")");
             System.out.println("-------------------");
+            displayTime();
 
         }
         //last station
         else if (flag == 2) {
             System.out.println("\nAll out");
             System.out.println("-------------------");
-            flag = 3;
+            displayTime();
          }
 
     }
