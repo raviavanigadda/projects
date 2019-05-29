@@ -112,12 +112,9 @@ public class MamaNanciaPizzeria {
 
         if (checkPwd.equals(inputPwd)) {
             if(check==1){
-
                 addPizza();
-
             }
             else if(check==2){
-
                 modifyPizza();
             }
 
@@ -149,7 +146,6 @@ public class MamaNanciaPizzeria {
             addPizza();
         } else {
             //add pizzas with ingredients
-
             for(int i=1; i <=numPizza; i++) {
                 DeluxePizza pizzaToCreate = new DeluxePizza();
                 pizzaToCreate.pizzaIndex=i; //to keep track of pizzas
